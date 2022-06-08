@@ -1,0 +1,7 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^callme.42web.io [NC,OR]
+
+RewriteCond %{HTTP_HOST} ^callme.42web.io [NC]
+
+RewriteRule ^(.*)$ /Dial/tel:$1 [L,R=301,NC]
