@@ -1,0 +1,37 @@
+<html>
+<div class="spacer" style="height:5px; display: none;" id="parm"></div>
+<centre>
+    <div
+        style="font-size: 14px; line-height: 120%; font-family: 'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #a99867;">
+        <p style="font-size: 14px; line-height: 16px;" id="seco"></p>
+    </div>
+</centre>
+
+
+<script>
+    var re = getParameter("k")
+    function getParameter(parameterName) {
+        var parameters = new URLSearchParams(window.location.search);
+        return parameters.get(parameterName); // Returns null if the query string is empty or the parameter is not found.
+    }
+    document.getElementById("parm").innerHTML = re
+
+    function redirect() {
+        var deft = "https://link2dial.me/home"
+        if (re == "tel:")
+            location.assign(deft)
+        else
+            location.assign(re)
+    }
+
+    var sec = 5;
+    function dissec() {
+        sec -= 1;
+        document.getElementById("seco").innerText = "Dialing " + re + " in " + sec + " Seconds..."
+
+    }
+    setInterval(dissec, 1000);
+    setInterval(redirect, 5000);
+</script>
+
+</html>
